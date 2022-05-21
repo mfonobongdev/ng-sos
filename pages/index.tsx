@@ -2,7 +2,10 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import mobileHeroTwo from '/public/assets/mobile-hero-two.jpg'
+import heroImage from '/public/assets/hero-final.jpg'
+import familyImage from '/public/assets/family.jpg'
+import teamImage from '/public/assets/team.jpg'
+import Head from 'next/head'
 
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
@@ -52,6 +55,10 @@ const Home: NextPage = () => {
 
   return (
       <main className={'z-0'}>
+        <Head>
+          <title>NG-SOS</title>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        </Head>
         {/*hero*/}
         <SectionComponent fullHeightNoCentering>
           <div id={'home'} className={'flex flex-row items-center space-x-5 h-full'}>
@@ -61,25 +68,36 @@ const Home: NextPage = () => {
               <HeadLineComponent medium>At Your Finger Tips.</HeadLineComponent>
             </div>
 
-            <div className={'basis-1/2 h-full'}>
-              <div className='relative w-full'>
-                <Image src={mobileHeroTwo} alt={'ng sos logo'} className={'object-contain'}/>
+            <div className={'basis-1/2'}>
+              <div className='relative w-full h-[800px] rounded-sm'>
+                <div className={'absolute h-full w-full bg-sosRed/25 z-10 rounded-sm'}/>
+                <Image src={heroImage} alt={'hero'} layout={'fill'} className={'object-cover object-top rounded-sm z-0'}/>
               </div>
             </div>
           </div>
         </SectionComponent>
 
         {/*second*/}
-        <div className={'bg-dullOrange text-center'}>
-          <SectionComponent fullHeight>
-            <HeadLineComponent semi>Are You Concerned</HeadLineComponent>
-            <SpacerComponent large />
-            <HeadLineComponent semi>About Your Family&apos;s Safety ?</HeadLineComponent>
-            <SpacerComponent large />
-            <div className={'mx-auto flex items-center justify-center'}>
-              <HeadLineComponent thin>Give NG-SOS A Try</HeadLineComponent>
-            </div>
-          </SectionComponent>
+        <div className={'bg-transparent text-center relative text-white'}>
+
+          <div className={'z-20'}>
+            <SectionComponent fullHeight>
+              <HeadLineComponent semi>Are You Concerned</HeadLineComponent>
+              <SpacerComponent large />
+              <HeadLineComponent semi>About Your Family&apos;s Safety ?</HeadLineComponent>
+              <SpacerComponent large />
+              <div className={'mx-auto flex items-center justify-center'}>
+                <HeadLineComponent thin>Give NG-SOS A Try</HeadLineComponent>
+              </div>
+            </SectionComponent>
+          </div>
+
+          <div className={'absolute inset-0 bg-sosRed/25 -z-10 rounded-sm'}/>
+
+          <div className='absolute inset-0 -z-20'>
+           <Image src={familyImage} alt={'hero'} layout={'fill'} className={'object-cover object-top rounded-sm z-0'}/>
+          </div>
+
         </div>
 
         {/*horizontal scroll section*/}
@@ -120,37 +138,38 @@ const Home: NextPage = () => {
         </div>
 
         {/*app highlights*/}
-        <div id={'highlights'} className={'bg-dullOrange text-center'}>
+        <div id={'highlights'} className={'bg-features-pattern text-center relative text-amber-900'}>
           <SectionComponent fullHeight>
             <div className={'mx-auto flex items-center justify-center'}>
               <HeadLineComponent semi>App Highlights</HeadLineComponent>
             </div>
             <SpacerComponent large />
             <div className={'grid grid-cols-3 grid-rows-2'}>
-              <div className={'p-10'}>
+              <div className={'p-10 drop-shadow-xl'}>
                 <HeadLineComponent medium>User Friendly</HeadLineComponent> The application is easy to use, with clearly marked buttons and
                 instructions
               </div>
-              <div className={'p-10'}>
+              <div className={'p-10 drop-shadow-xl'}>
                 <HeadLineComponent medium>Mobile</HeadLineComponent> NG-SOS brings lifesaving assistance to you, at any time, anywhere in
                 Nigeria
               </div>
-              <div className={'p-10'}>
+              <div className={'p-10 drop-shadow-xl'}>
                 <HeadLineComponent medium>Modular</HeadLineComponent> It is compatible with Smart, ios and Android platforms
               </div>
-              <div className={'p-10'}>
+              <div className={'p-10 drop-shadow-xl'}>
                 <HeadLineComponent medium>Affordable</HeadLineComponent> Small monthly fee, per person
               </div>
-              <div className={'p-10'}>
+              <div className={'p-10 drop-shadow-xl'}>
                 <HeadLineComponent medium>Innovative</HeadLineComponent> It essentially turns your phone into a geo- tagged emergency response
                 security device
               </div>
-              <div className={'p-10'}>
+              <div className={'p-10 drop-shadow-xl'}>
                 <HeadLineComponent medium>Practical</HeadLineComponent> All your necessary medical data communicated to emergency personal at
                 the scened
               </div>
             </div>
           </SectionComponent>
+          <div className={'absolute inset-0 bg-dullOrange/90 -z-10 rounded-sm'}/>
         </div>
 
         {/*services*/}
@@ -160,51 +179,73 @@ const Home: NextPage = () => {
               <HeadLineComponent semi>Services Offered</HeadLineComponent>
             </div>
             <SpacerComponent large />
-            <div className={'grid grid-cols-3 grid-rows-2'}>
-              <div className={'p-14'}>
+            <div className={'grid grid-cols-3 grid-rows-2 text-left'}>
+              <div className={'p-14 flex flex-col space-y-5'}>
+
+                <div className={'border rounded self-start w-10 h-10 flex items-center justify-center shadow-sm'}>1</div>
+
                 <HeadLineComponent medium>Armed Response</HeadLineComponent>
-                <SpacerComponent small />
-                All agents are equipped with the necessary resources to respond to a crisis situation eg (firearms , body armor, tracking
-                devices as well as cellular phones and a closed-line radio system)
+
+                <div>
+                  All agents are equipped with the necessary resources to respond to a crisis situation eg (firearms , body armor, tracking
+                  devices as well as cellular phones and a closed-line radio system)
+                </div>
               </div>
-              <div className={'p-14'}>
+              <div className={'p-14 flex flex-col space-y-5'}>
+                <div className={'border rounded self-start w-10 h-10 flex items-center justify-center shadow-sm'}>2</div>
                 <HeadLineComponent medium>specialized armed Escorts</HeadLineComponent>
-                <SpacerComponent small />
-                We in armed and unarmed escorts depending on the client’s needs. All personnel are fully trained and are backed by a National
-                ground team structure and Control Centre.
+               <div>
+                 We in armed and unarmed escorts depending on the client’s needs. All personnel are fully trained and are backed by a National
+                 ground team structure and Control Centre.
+               </div>
+
               </div>
-              <div className={'p-14'}>
+              <div className={'p-14 flex flex-col space-y-5'}>
+                <div className={'border rounded self-start w-10 h-10 flex items-center justify-center shadow-sm'}>3</div>
                 <HeadLineComponent medium>Emergency Medical Response</HeadLineComponent>
-                <SpacerComponent small />
-                In the event of a medical emergency, an appropriate route will be undertaken to dispatch an ambulance or a rapid response
-                vehicle, immediately to the scene of a medical emergency where appropriate lifesaving support will be provided where relevant
+               <div>
+                 In the event of a medical emergency, an appropriate route will be undertaken to dispatch an ambulance or a rapid response
+                 vehicle, immediately to the scene of a medical emergency where appropriate lifesaving support will be provided where relevant
+               </div>
+
               </div>
-              <div className={'p-14'}>
+              <div className={'p-14 flex flex-col space-y-5'}>
+                <div className={'border rounded self-start w-10 h-10 flex items-center justify-center shadow-sm'}>4</div>
                 <HeadLineComponent medium>Medical Transportation</HeadLineComponent>
-                <SpacerComponent small />
-                In the event of a Medical Emergency, we will arrange Emergency Medical Transportation by Road or Air under appropriate medical
-                supervision, if necessary, to the nearest medical facility capable of providing adequate care
+                <div>
+                  In the event of a Medical Emergency, we will arrange Emergency Medical Transportation by Road or Air under appropriate medical
+                  supervision, if necessary, to the nearest medical facility capable of providing adequate care
+                </div>
+
               </div>
-              <div className={'p-14'}>
+              <div className={'p-14 flex flex-col space-y-5'}>
+                <div className={'border rounded self-start w-10 h-10 flex items-center justify-center shadow-sm'}>5</div>
+
                 <HeadLineComponent medium>Medical Advice and Assistance Hotline</HeadLineComponent>
-                <SpacerComponent small />
-                Personnel shall be available 24-hours a day to provide general medical information and advice. This is an advisory service, as
-                a telephonic conversation does not permit an accurate diagnosis. security device
+                <div>
+                  Personnel shall be available 24-hours a day to provide general medical information and advice. This is an advisory service, as
+                  a telephonic conversation does not permit an accurate diagnosis. security device
+                </div>
+
               </div>
-              <div className={'p-14'}>
+              <div className={'p-14 flex flex-col space-y-5'}>
+                <div className={'border rounded self-start w-10 h-10 flex items-center justify-center shadow-sm'}>6</div>
+
                 <HeadLineComponent medium>Ambulance Service</HeadLineComponent>
-                <SpacerComponent small />
-                NG-SOS has tapped into the entire Nigerian footprint of Ambulance service providers and have service legal agreements in place
-                with all the private ambulance service providers
+                <div>
+                  NG-SOS has tapped into the entire Nigerian footprint of Ambulance service providers and have service legal agreements in place
+                  with all the private ambulance service providers
+                </div>
+
               </div>
             </div>
           </SectionComponent>
         </div>
 
         {/*contact us*/}
-        <footer id={'contact'} className='font-Montserrat bg-dullOrange xl:px-[15%] xl:py-52 py-16 md:py-28 md:px-[10%] px-[5%] min-h-screen flex flex-col items-center justify-center'>
+        <footer id={'contact'} className='font-Montserrat relative xl:px-[15%] xl:py-52 py-16 md:py-28 md:px-[10%] px-[5%] min-h-screen flex flex-col items-center justify-center'>
           <HeadLineComponent medium>
-            <div className='text-center'>
+            <div className='text-center text-white'>
               Interested?
               <br />
               <span>
@@ -220,6 +261,12 @@ const Home: NextPage = () => {
             <LinkedinIcon />
             <InstagramIcon />
           </div>
+
+          <div className={'absolute inset-0 bg-sosRed/25 -z-10 rounded-sm'}/>
+
+          <div className='absolute inset-0 -z-20'>
+            <Image src={teamImage} alt={'hero'} layout={'fill'} className={'object-cover object-top rounded-sm z-0'}/>
+          </div>
         </footer>
 
         {/*download*/}
@@ -231,9 +278,9 @@ const Home: NextPage = () => {
               <HeadLineComponent semi>to get started</HeadLineComponent>
             </div>
             <SpacerComponent large />
-            <div className={'mx-auto flex justify-around'}>
-              <Link href={'/'}>
-                <div className={'border border-blue-700 rounded-md py-4 px-10 flex space-x-5 items-center'}>
+            <div className={'mx-auto flex justify-center items-center space-x-10'}>
+              <Link className='cursor-pointer' href={'/'}>
+                <div className={'cursor-pointer border border-blue-700 rounded-md py-4 px-10 flex space-x-5 items-center hover:opacity-50'}>
                   <svg className={'w-6 h-6 fill-blue-700'} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'>
                     <path d='M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z' />
                   </svg>
@@ -246,8 +293,8 @@ const Home: NextPage = () => {
                 </div>
               </Link>
 
-              <Link href={'/'}>
-                <div className={'border border-blue-700 rounded-md py-4 px-10 flex space-x-5 items-center'}>
+              <Link className='cursor-pointer' href={'/'}>
+                <div className={'cursor-pointer border border-blue-700 rounded-md py-4 px-10 flex space-x-5 items-center hover:opacity-50'}>
                   <svg className={'w-6 h-6 fill-blue-700'} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
                     <path d='M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z' />
                   </svg>
@@ -277,7 +324,7 @@ const WhatsappIcon = () => {
       focusable='false'
       data-prefix='fab'
       data-icon='whatsapp'
-      className='md:w-12 md:h-12 w-10 h-10 fill-current text-red-400'
+      className='md:w-12 md:h-12 w-10 h-10 fill-current text-white'
       role='img'
       viewBox='0 0 448 512'>
       <path
@@ -296,7 +343,7 @@ const LinkedinIcon = () => {
       focusable='false'
       data-prefix='fab'
       data-icon='linkedin-in'
-      className='md:w-12 md:h-12 w-10 h-10 fill-current text-red-400'
+      className='md:w-12 md:h-12 w-10 h-10 fill-current text-white'
       role='img'
       viewBox='0 0 448 512'>
       <path
@@ -315,7 +362,7 @@ const InstagramIcon = () => {
       focusable='false'
       data-prefix='fab'
       data-icon='instagram'
-      className='md:w-12 md:h-12 w-10 h-10 fill-current text-red-400'
+      className='md:w-12 md:h-12 w-10 h-10 fill-current text-white'
       role='img'
       viewBox='0 0 448 512'>
       <path
@@ -334,7 +381,7 @@ const EmailIcon = () => {
       focusable='false'
       data-prefix='fas'
       data-icon='at'
-      className='md:w-12 md:h-12 w-10 h-10 fill-current text-red-400'
+      className='md:w-12 md:h-12 w-10 h-10 fill-current text-white'
       role='img'
       viewBox='0 0 512 512'>
       <path

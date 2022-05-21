@@ -6,9 +6,9 @@ import HeadLineComponent from '../components/primitives/headline'
 
 export default function NavigationComponent() {
   return (
-    <div className={'py-10 px-[8%] flex justify-between items-center fixed top-0 left-0 right-0 z-10'}>
-      <div className='relative w-40 h-40'>
-        <Image src={ngSosLogo} alt={'ng sos logo'} className={'object-contain'} layout={'fill'} />
+    <div className={'py-0.5 px-[8%] flex justify-between items-center fixed top-0 left-0 right-0 z-50 bg-white/80 shadow-md backdrop-blur'}>
+      <div className='relative w-28 h-16'>
+        <Image src={ngSosLogo} alt={'ng sos logo'} className={'object-contain object-center'} layout={'fill'} />
       </div>
 
       {/*nav items*/}
