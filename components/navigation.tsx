@@ -12,7 +12,7 @@ export default function NavigationComponent() {
       </div>
 
       {/*nav items*/}
-      <div className={'flex space-x-10'}>
+      <div className={'lg:flex flex-row space-x-10 hidden'}>
         <div className='cursor-pointer'>
           <Link className='cursor-pointer' to={'home'} spy={true} smooth={true} offset={-200}>
           <HeadLineComponent small>Home</HeadLineComponent>

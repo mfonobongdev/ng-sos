@@ -54,21 +54,21 @@ const Home: NextPage = () => {
   })
 
   return (
-      <main className={'z-0'}>
+      <main className={'z-0 overflow-hidden'}>
         <Head>
           <title>NG-SOS</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
         {/*hero*/}
         <SectionComponent fullHeightNoCentering>
-          <div id={'home'} className={'flex flex-row items-center space-x-5 h-full'}>
-            <div className={'basis-1/2'}>
+          <div id={'home'} className={'flex md:flex-row flex-col md:items-center mt-20 md:mt-0 md:space-x-5 h-full overflow-hidden'}>
+            <div className={'basis-1/2 shrink mb-16 md:mb-0'}>
               <HeadLineComponent>Full-Service Emergency Assistance</HeadLineComponent>
               <SpacerComponent medium />
               <HeadLineComponent medium>At Your Finger Tips.</HeadLineComponent>
             </div>
 
-            <div className={'basis-1/2'}>
+            <div className={'basis-1/2 grow'}>
               <div className='relative w-full h-[800px] rounded-sm'>
                 <div className={'absolute h-full w-full bg-sosRed/25 z-10 rounded-sm'}/>
                 <Image src={heroImage} alt={'hero'} layout={'fill'} className={'object-cover object-top rounded-sm z-0'}/>
@@ -78,7 +78,7 @@ const Home: NextPage = () => {
         </SectionComponent>
 
         {/*second*/}
-        <div className={'bg-transparent text-center relative text-white'}>
+        <div className={'bg-transparent text-center relative text-white overflow-hidden'}>
 
           <div className={'z-20'}>
             <SectionComponent fullHeight>
@@ -101,11 +101,12 @@ const Home: NextPage = () => {
         </div>
 
         {/*horizontal scroll section*/}
-        <div id={'details'} ref={(el) => (hPanel = el)} className={'min-h-screen w-screen relative pl-20'}>
+        <div id={'details'}>
+        <div  ref={(el) => (hPanel = el)} className={'min-h-screen w-screen relative pl-20 hidden lg:block'}>
           <div
             ref={(el) => (hContainer = el)}
             className={
-              'fixed font-Montserrat text-red-400 text-center min-h-screen flex items-center justify-center absolute inset-0 ml-[10%] xl:px-[15%] xl:py-52 py-14 md:py-28 md:px-[10%] px-[5%]'
+              'fixed font-Montserrat text-red-400 text-center min-h-screen flex items-center justify-center absolute inset-0 ml-[10%] lg:px-[15%] lg:py-52 py-14 md:py-28 md:px-[10%] px-[5%]'
             }>
             <div className={'min-w-[100%]'} />
             <div className={'min-w-[100%]'} />
@@ -137,6 +138,38 @@ const Home: NextPage = () => {
           </div>
         </div>
 
+        <div className={'text-center text-red-400 block lg:hidden'}>
+          <SectionComponent fullHeight>
+            <div className={'mx-auto flex items-center justify-center'}>
+              <HeadLineComponent semi>What ?, How ?</HeadLineComponent>
+            </div>
+            <SpacerComponent large />
+            <div className={'grid grid-cols-1 text-left'}>
+              <div className={'p-14 flex flex-col space-y-5'}>
+
+                <div className={'border rounded self-start w-10 h-10 flex items-center justify-center shadow-sm'}>1</div>
+
+                <HeadLineComponent medium>What is NG-SOS ?</HeadLineComponent>
+
+                <div>
+                  A full-service emergency assistance platform that alerting the closest private security, and medical response provider in your
+                  immediate vicinity<br/>Available anywhere in Nigeria
+                </div>
+              </div>
+              <div className={'p-14 flex flex-col space-y-5'}>
+                <div className={'border rounded self-start w-10 h-10 flex items-center justify-center shadow-sm'}>2</div>
+                <HeadLineComponent medium>How does it work ?</HeadLineComponent>
+                <div>
+                  The NG-SOS application is linked to the GPS data on your telephone; making it easier for emergency personal to find, and assist you as quickly and efficiently as possible.
+                </div>
+
+              </div>
+            </div>
+          </SectionComponent>
+        </div>
+        </div>
+
+
         {/*app highlights*/}
         <div id={'highlights'} className={'bg-features-pattern text-center relative text-amber-900'}>
           <SectionComponent fullHeight>
@@ -144,7 +177,7 @@ const Home: NextPage = () => {
               <HeadLineComponent semi>App Highlights</HeadLineComponent>
             </div>
             <SpacerComponent large />
-            <div className={'grid grid-cols-3 grid-rows-2'}>
+            <div className={'grid grid-cols-2 lg:grid-cols-3 lg:grid-rows-2'}>
               <div className={'p-10 drop-shadow-xl'}>
                 <HeadLineComponent medium>User Friendly</HeadLineComponent> The application is easy to use, with clearly marked buttons and
                 instructions
@@ -179,7 +212,7 @@ const Home: NextPage = () => {
               <HeadLineComponent semi>Services Offered</HeadLineComponent>
             </div>
             <SpacerComponent large />
-            <div className={'grid grid-cols-3 grid-rows-2 text-left'}>
+            <div className={'grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 text-left'}>
               <div className={'p-14 flex flex-col space-y-5'}>
 
                 <div className={'border rounded self-start w-10 h-10 flex items-center justify-center shadow-sm'}>1</div>
@@ -246,7 +279,7 @@ const Home: NextPage = () => {
         <footer id={'contact'} className='font-Montserrat relative xl:px-[15%] xl:py-52 py-16 md:py-28 md:px-[10%] px-[5%] min-h-screen flex flex-col items-center justify-center'>
           <HeadLineComponent medium>
             <div className='text-center text-white'>
-              Interested?
+              Interested ?
               <br />
               <span>
               <small>Get in touch</small>

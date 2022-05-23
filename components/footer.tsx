@@ -10,8 +10,8 @@ import React from 'react'
 export default function FooterComponent() {
   return (
     <section className={'p-16'}>
-      <div className='grid md:grid-cols-6 grid-cols-2 md:grid-rows-1 gap-8 md:gap-0 grid-rows-2 w-full place-content-start grid-flow-row'>
-        <div className='flex flex-col space-y-4 col-start-1 col-end-2'>
+      <div className='grid md:grid-cols-4 lg:grid-cols-7 grid-cols-2 md:grid-rows-1 gap-8 md:gap-0 grid-rows-2 w-full place-content-start grid-flow-row'>
+        <div className='flex flex-col lg:space-y-4 col-start-1 col-end-2'>
           <div className='cursor-pointer'>
             <div className='flex items-center'>
               <div className='relative w-28 h-20'>
@@ -29,7 +29,7 @@ export default function FooterComponent() {
           </a>
         </div>
         <div className='block md:hidden'>{''}</div>
-        <div className='flex flex-col space-y-4 md:col-start-5 md:col-end-6'>
+        <div className='flex flex-col md:space-y-4 md:col-start-3 md:col-end-4 lg:col-start-6 lg:col-end-7'>
           <div className='font-bold'>Links</div>
           <HeadLineComponent small>
             <Link className='cursor-pointer' to={'home'} spy={true} smooth={true} offset={-200}>
@@ -57,7 +57,7 @@ export default function FooterComponent() {
             </Link>
           </HeadLineComponent>
         </div>
-        <div className='flex flex-col space-y-4 md:col-start-6 md:col-end-7 overflow-clip'>
+        <div className='flex flex-col space-y-4 md:col-start-4 md:col-end-5 lg:col-start-7 lg:col-end-8 overflow-clip'>
           <div className='font-bold'>Contact Us</div>
           <HeadLineComponent small>sales@m2m-nigeria.com</HeadLineComponent>
           <HeadLineComponent small>+234 (1) 236 6367</HeadLineComponent>
