@@ -19,7 +19,8 @@ export default function SectionComponent({
       className={cx('font-Montserrat bg-primaryLight dark:bg-primaryDark xl:px-[10%] xl:py-42 py-14 md:py-28 md:px-[8%] px-[5%]', {
         'md:h-screen flex items-center': responsiveFullHeight,
         'min-h-screen grid place-items-center text-center': fullHeight,
-        'min-h-screen': fullHeightNoCentering
+        'min-h-screen': fullHeightNoCentering,
+        'grid place-items-center text-center':!responsiveFullHeight && !fullHeight && !fullHeightNoCentering
       })}>
       {fullHeight && <div>{children}</div>}
       {responsiveFullHeight && <div>{children}</div>}

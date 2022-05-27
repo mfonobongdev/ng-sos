@@ -1,6 +1,5 @@
 import ngSosLogo from '/public/assets/ng-sos-logo.jpeg'
-// import Link from 'next/link'
-import { Link } from 'react-scroll'
+import Link from 'next/link'
 import Image from 'next/image'
 import HeadLineComponent from '../components/primitives/headline'
 
@@ -13,36 +12,46 @@ export default function NavigationComponent() {
 
       {/*nav items*/}
       <div className={'lg:flex flex-row space-x-10 hidden'}>
-        <div className='cursor-pointer'>
-          <Link className='cursor-pointer' to={'home'} spy={true} smooth={true} offset={-200}>
-          <HeadLineComponent small>Home</HeadLineComponent>
+
+          <Link  href={'/'}>
+            <div className='cursor-pointer'>
+              <HeadLineComponent small>Home</HeadLineComponent>
+            </div>
         </Link>
-        </div>
-        <div className='cursor-pointer'>
-          <Link className='cursor-pointer' to={'details'} spy={true} smooth={true} offset={-1}>
-            <HeadLineComponent small>Details</HeadLineComponent>
+
+
+          <Link className='cursor-pointer' href={'/security'}>
+            <div className='cursor-pointer'>
+              <HeadLineComponent small>Security</HeadLineComponent>
+            </div>
           </Link>
-        </div>
-        <div className='cursor-pointer'>
-          <Link className='cursor-pointer' to={'highlights'} spy={true} smooth={true} offset={-1}>
-          <HeadLineComponent small>Highlights</HeadLineComponent>
+
+
+          <Link className='cursor-pointer' href={'/medical'}>
+            <div className='cursor-pointer'>
+              <HeadLineComponent small>Medical</HeadLineComponent>
+            </div>
         </Link>
-        </div>
-        <div className='cursor-pointer'>
-          <Link className='cursor-pointer' to={'services'} spy={true} smooth={true} offset={-1}>
-          <HeadLineComponent small>Services</HeadLineComponent>
+
+
+          <Link className='cursor-pointer' href={'/road'}>
+            <div className='cursor-pointer'>
+              <HeadLineComponent small>Road-Side Assistance</HeadLineComponent>
+            </div>
         </Link>
-        </div>
-        <div className='cursor-pointer'>
-          <Link className='cursor-pointer' to={'contact'} spy={true} smooth={true} offset={-1}>
-          <HeadLineComponent small>Contact Us</HeadLineComponent>
+
+        <Link className='cursor-pointer' href={'/control'}>
+          <div className='cursor-pointer'>
+            <HeadLineComponent small>Control Room</HeadLineComponent>
+          </div>
         </Link>
-        </div>
-        <div className='cursor-pointer'>
-          <Link className='cursor-pointer' to={'download'} spy={true} smooth={true} offset={-1}>
-          <HeadLineComponent small>Download</HeadLineComponent>
+
+          <Link className='cursor-pointer' href={'/about'}>
+            <div className='cursor-pointer'>
+              <HeadLineComponent small>About Us</HeadLineComponent>
+            </div>
         </Link>
-        </div>
+
       </div>
     </div>
   )

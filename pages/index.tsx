@@ -5,6 +5,9 @@ import Image from 'next/image'
 import heroImage from '/public/assets/hero-final.jpg'
 import familyImage from '/public/assets/family.jpg'
 import teamImage from '/public/assets/team.jpg'
+import ambulanceImage from '/public/assets/ambulance.jpg'
+import roadImage from '/public/assets/road.jpg'
+import securityImage from '/public/assets/security.jpg'
 import Head from 'next/head'
 
 import { gsap } from 'gsap'
@@ -12,46 +15,14 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import SectionComponent from '../components/primitives/section'
 import HeadLineComponent from '../components/primitives/headline'
 import SpacerComponent from '../components/primitives/spacer'
-import FooterComponent from '../components/footer'
+import FooterComponent, { LinkIcon } from '../components/footer'
 
 gsap.registerPlugin(ScrollTrigger)
 
 
 const Home: NextPage = () => {
-  let boxARef: HTMLDivElement | null = null
-  let hContainer: HTMLDivElement | null = null
-  let hPanel: HTMLDivElement | null = null
 
-  React.useEffect(() => {
-    gsap.to(boxARef, {
-      scrollTrigger: {
-        trigger: boxARef,
-        start: 'top center',
-        // markers: true,
-        toggleActions: 'restart pause reverse pause'
-      },
-      x: 400,
-      rotate: 360,
-      duration: 3
-    })
-  })
 
-  //horizontal animation
-  React.useEffect(() => {
-    gsap.to(hContainer, {
-      // xPercent: -100 * (hPanels.length - 1),
-      xPercent: -200,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: hPanel,
-        pin: true,
-        scrub: 1
-        // snap: 1 / (hPanels.length - 1)
-        // snap: 1
-        // end: () => '+=' + hContainer?.offsetWidth
-      }
-    })
-  })
 
   return (
       <main className={'z-0 overflow-hidden'}>
@@ -61,11 +32,41 @@ const Home: NextPage = () => {
         </Head>
         {/*hero*/}
         <SectionComponent fullHeightNoCentering>
-          <div id={'home'} className={'flex md:flex-row flex-col md:items-center mt-20 md:mt-0 md:space-x-5 h-full overflow-hidden'}>
-            <div className={'basis-1/2 shrink mb-16 md:mb-0'}>
-              <HeadLineComponent>Full-Service Emergency Assistance</HeadLineComponent>
+          <div id={'home'} className={'flex lg:flex-row flex-col lg:items-center mt-20 lg:mt-0 lg:space-x-5 h-full overflow-hidden'}>
+            <div className={'basis-1/2 shrink mb-16 lg:mb-0'}>
+              <HeadLineComponent semi>Full-Service Emergency Assistance</HeadLineComponent>
               <SpacerComponent medium />
               <HeadLineComponent medium>At Your Finger Tips.</HeadLineComponent>
+              <SpacerComponent medium />
+              <div className={'mx-auto flex  justify-start items-center text-red-400 space-x-10'}>
+                <Link className='cursor-pointer' href={'/'}>
+                  <div className={'cursor-pointer border border-red-700 rounded-md py-4 px-10 flex space-x-5 items-center hover:opacity-50'}>
+                    <svg className={'w-6 h-6 fill-red-500'} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'>
+                      <path d='M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z' />
+                    </svg>
+                    <div className={'flex flex-col'}>
+                      <span>Get on</span>
+                      <span>
+                    <strong>App Store</strong>
+                  </span>
+                    </div>
+                  </div>
+                </Link>
+
+                <Link className='cursor-pointer' href={'/'}>
+                  <div className={'cursor-pointer border border-red-700 rounded-md py-4 px-10 flex space-x-5 items-center hover:opacity-50'}>
+                    <svg className={'w-6 h-6 fill-red-500'} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+                      <path d='M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z' />
+                    </svg>
+                    <div className={'flex flex-col'}>
+                      <span>Get on</span>
+                      <span>
+                    <strong>Google Play</strong>
+                  </span>
+                    </div>
+                  </div>
+                </Link>
+              </div>
             </div>
 
             <div className={'basis-1/2 grow'}>
@@ -100,75 +101,99 @@ const Home: NextPage = () => {
 
         </div>
 
-        {/*horizontal scroll section*/}
-        <div id={'details'}>
-        <div  ref={(el) => (hPanel = el)} className={'min-h-screen w-screen relative pl-20 hidden lg:block'}>
-          <div
-            ref={(el) => (hContainer = el)}
-            className={
-              'fixed font-Montserrat text-red-400 text-center min-h-screen flex items-center justify-center absolute inset-0 ml-[10%] lg:px-[15%] lg:py-52 py-14 md:py-28 md:px-[10%] px-[5%]'
-            }>
-            <div className={'min-w-[100%]'} />
-            <div className={'min-w-[100%]'} />
-            <div className={'min-w-[100%]'} />
+        {/*security*/}
+        <SectionComponent fullHeightNoCentering>
+          <div id={'home'} className={'flex lg:flex-row flex-col lg:items-center mt-20 lg:mt-0 lg:space-x-5 h-full overflow-hidden'}>
+            <div className={'basis-1/2 shrink mb-16 lg:mb-0'}>
+              <HeadLineComponent thin><strong>Security</strong></HeadLineComponent>
+              <SpacerComponent medium />
+              <HeadLineComponent thin>NG-SOS provides a “safety-net” for users by providing services with fast
+                acting private security-providers.</HeadLineComponent>
+              <SpacerComponent medium />
+              <div className={'mx-auto flex  justify-start items-center text-red-400 space-x-10'}>
+                <Link className='cursor-pointer' href={'/security'}>
+                  <div className={'cursor-pointer border border-red-700 rounded-md py-4 px-10 flex space-x-5 items-center hover:opacity-50'}>
+                    <div className={'flex flex-col'}>
+                      <span>
+                    <strong>Learn More</strong>
+                  </span>
+                    </div>
+                    <LinkIcon/>
+                  </div>
+                </Link>
+              </div>
+            </div>
 
-            <div className={'min-w-[60%]'}>
-              <HeadLineComponent medium>What is NG-SOS ?</HeadLineComponent>
-            </div>
-            <div className={'min-w-[60%]'}>
-              <HeadLineComponent medium>
-                A full-service emergency assistance platform that alerting the closest private security, and medical response provider in your
-                immediate vicinity
-              </HeadLineComponent>
-            </div>
-            <div className={'min-w-[60%]'}>
-              <HeadLineComponent medium>Available anywhere in Nigeria</HeadLineComponent>
-            </div>
-            <div className={'min-w-[60%]'}>
-              <HeadLineComponent medium>How does it work ?</HeadLineComponent>
-            </div>
-            <div className={'min-w-[60%]'}>
-              <HeadLineComponent medium>The NG-SOS application is linked to the GPS data on your telephone</HeadLineComponent>
-            </div>
-            <div className={'min-w-[60%]'}>
-              <HeadLineComponent medium>
-                making it easier for emergency personal to find, and assist you as quickly and efficiently as possible.
-              </HeadLineComponent>
+            <div className={'basis-1/2 grow'}>
+              <div className='relative w-full h-[600px] lg:h-[800px] rounded-sm'>
+                <div className={'absolute h-full w-full bg-sosRed/40 z-10 rounded-sm'}/>
+                <Image src={securityImage} alt={'hero'} layout={'fill'} className={'object-cover object-top rounded-sm z-0'}/>
+              </div>
             </div>
           </div>
-        </div>
+        </SectionComponent>
 
-        <div className={'text-center text-red-400 block lg:hidden'}>
-          <SectionComponent fullHeight>
-            <div className={'mx-auto flex items-center justify-center'}>
-              <HeadLineComponent semi>What ?, How ?</HeadLineComponent>
-            </div>
-            <SpacerComponent large />
-            <div className={'grid grid-cols-1 text-left'}>
-              <div className={'p-14 flex flex-col space-y-5'}>
-
-                <div className={'border rounded self-start w-10 h-10 flex items-center justify-center shadow-sm'}>1</div>
-
-                <HeadLineComponent medium>What is NG-SOS ?</HeadLineComponent>
-
-                <div>
-                  A full-service emergency assistance platform that alerting the closest private security, and medical response provider in your
-                  immediate vicinity<br/>Available anywhere in Nigeria
-                </div>
-              </div>
-              <div className={'p-14 flex flex-col space-y-5'}>
-                <div className={'border rounded self-start w-10 h-10 flex items-center justify-center shadow-sm'}>2</div>
-                <HeadLineComponent medium>How does it work ?</HeadLineComponent>
-                <div>
-                  The NG-SOS application is linked to the GPS data on your telephone; making it easier for emergency personal to find, and assist you as quickly and efficiently as possible.
-                </div>
-
+        {/*medical*/}
+        <SectionComponent fullHeightNoCentering>
+          <div id={'home'} className={'flex lg:flex-row-reverse flex-col lg:items-center mt-20 lg:mt-0 lg:space-x-20 lg:space-x-reverse h-full overflow-hidden'}>
+            <div className={'basis-1/2 shrink mb-16 lg:mb-0'}>
+              <HeadLineComponent thin><strong>Medical Service</strong></HeadLineComponent>
+              <SpacerComponent medium />
+              <HeadLineComponent thin>The NG-SOS APP automatically sends private medical response assistance, to your exact location the moment you press that button</HeadLineComponent>
+              <SpacerComponent medium />
+              <div className={'mx-auto flex  justify-start items-center text-red-400 space-x-10'}>
+                <Link className='cursor-pointer' href={'/medical'}>
+                  <div className={'cursor-pointer border border-red-700 rounded-md py-4 px-10 flex space-x-5 items-center hover:opacity-50'}>
+                    <div className={'flex flex-col'}>
+                      <span>
+                    <strong>Learn More</strong>
+                  </span>
+                    </div>
+                    <LinkIcon/>
+                  </div>
+                </Link>
               </div>
             </div>
-          </SectionComponent>
-        </div>
-        </div>
 
+            <div className={'basis-1/2 grow'}>
+              <div className='relative w-full h-[600px] lg:h-[800px] rounded-sm'>
+                <div className={'absolute h-full w-full bg-sosRed/50 z-10 rounded-sm'}/>
+                <Image src={ambulanceImage} alt={'hero'} layout={'fill'} className={'object-cover object-top rounded-sm z-0'}/>
+              </div>
+            </div>
+          </div>
+        </SectionComponent>
+
+        {/*Road side assist*/}
+        <SectionComponent fullHeightNoCentering>
+          <div id={'home'} className={'flex lg:flex-row flex-col lg:items-center mt-20 lg:mt-0 lg:space-x-5 h-full overflow-hidden'}>
+            <div className={'basis-1/2 shrink mb-16 lg:mb-0'}>
+              <HeadLineComponent thin><strong>Roadside Assist</strong></HeadLineComponent>
+              <SpacerComponent medium />
+              <HeadLineComponent thin>NG-SOS covers the entire geographical area within the borders of Nigeria; supporting you during road side emergencies</HeadLineComponent>
+              <SpacerComponent medium />
+              <div className={'mx-auto flex  justify-start items-center text-red-400 space-x-10'}>
+                <Link className='cursor-pointer' href={'/road'}>
+                  <div className={'cursor-pointer border border-red-700 rounded-md py-4 px-10 flex space-x-5 items-center hover:opacity-50'}>
+                    <div className={'flex flex-col'}>
+                      <span>
+                    <strong>Learn More</strong>
+                  </span>
+                    </div>
+                    <LinkIcon/>
+                  </div>
+                </Link>
+              </div>
+            </div>
+
+            <div className={'basis-1/2 grow'}>
+              <div className='relative w-full h-[600px] lg:h-[800px] rounded-sm'>
+                <div className={'absolute h-full w-full bg-sosRed/50 z-10 rounded-sm'}/>
+                <Image src={roadImage} alt={'hero'} layout={'fill'} className={'object-cover object-top rounded-sm z-0'}/>
+              </div>
+            </div>
+          </div>
+        </SectionComponent>
 
         {/*app highlights*/}
         <div id={'highlights'} className={'bg-features-pattern text-center relative text-amber-900'}>
@@ -205,76 +230,6 @@ const Home: NextPage = () => {
           <div className={'absolute inset-0 bg-dullOrange/90 -z-10 rounded-sm'}/>
         </div>
 
-        {/*services*/}
-        <div id={'services'} className={'text-center'}>
-          <SectionComponent fullHeight>
-            <div className={'mx-auto flex items-center justify-center'}>
-              <HeadLineComponent semi>Services Offered</HeadLineComponent>
-            </div>
-            <SpacerComponent large />
-            <div className={'grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 text-left'}>
-              <div className={'p-14 flex flex-col space-y-5'}>
-
-                <div className={'border rounded self-start w-10 h-10 flex items-center justify-center shadow-sm'}>1</div>
-
-                <HeadLineComponent medium>Armed Response</HeadLineComponent>
-
-                <div>
-                  All agents are equipped with the necessary resources to respond to a crisis situation eg (firearms , body armor, tracking
-                  devices as well as cellular phones and a closed-line radio system)
-                </div>
-              </div>
-              <div className={'p-14 flex flex-col space-y-5'}>
-                <div className={'border rounded self-start w-10 h-10 flex items-center justify-center shadow-sm'}>2</div>
-                <HeadLineComponent medium>specialized armed Escorts</HeadLineComponent>
-               <div>
-                 We in armed and unarmed escorts depending on the client’s needs. All personnel are fully trained and are backed by a National
-                 ground team structure and Control Centre.
-               </div>
-
-              </div>
-              <div className={'p-14 flex flex-col space-y-5'}>
-                <div className={'border rounded self-start w-10 h-10 flex items-center justify-center shadow-sm'}>3</div>
-                <HeadLineComponent medium>Emergency Medical Response</HeadLineComponent>
-               <div>
-                 In the event of a medical emergency, an appropriate route will be undertaken to dispatch an ambulance or a rapid response
-                 vehicle, immediately to the scene of a medical emergency where appropriate lifesaving support will be provided where relevant
-               </div>
-
-              </div>
-              <div className={'p-14 flex flex-col space-y-5'}>
-                <div className={'border rounded self-start w-10 h-10 flex items-center justify-center shadow-sm'}>4</div>
-                <HeadLineComponent medium>Medical Transportation</HeadLineComponent>
-                <div>
-                  In the event of a Medical Emergency, we will arrange Emergency Medical Transportation by Road or Air under appropriate medical
-                  supervision, if necessary, to the nearest medical facility capable of providing adequate care
-                </div>
-
-              </div>
-              <div className={'p-14 flex flex-col space-y-5'}>
-                <div className={'border rounded self-start w-10 h-10 flex items-center justify-center shadow-sm'}>5</div>
-
-                <HeadLineComponent medium>Medical Advice and Assistance Hotline</HeadLineComponent>
-                <div>
-                  Personnel shall be available 24-hours a day to provide general medical information and advice. This is an advisory service, as
-                  a telephonic conversation does not permit an accurate diagnosis. security device
-                </div>
-
-              </div>
-              <div className={'p-14 flex flex-col space-y-5'}>
-                <div className={'border rounded self-start w-10 h-10 flex items-center justify-center shadow-sm'}>6</div>
-
-                <HeadLineComponent medium>Ambulance Service</HeadLineComponent>
-                <div>
-                  NG-SOS has tapped into the entire Nigerian footprint of Ambulance service providers and have service legal agreements in place
-                  with all the private ambulance service providers
-                </div>
-
-              </div>
-            </div>
-          </SectionComponent>
-        </div>
-
         {/*contact us*/}
         <footer id={'contact'} className='font-Montserrat relative xl:px-[15%] xl:py-52 py-16 md:py-28 md:px-[10%] px-[5%] min-h-screen flex flex-col items-center justify-center'>
           <HeadLineComponent medium>
@@ -303,7 +258,7 @@ const Home: NextPage = () => {
         </footer>
 
         {/*download*/}
-        <div id={'download'} className={'bg-lightBlue text-deepBlue'}>
+        <div id={'download'} className={'bg-red-200 text-red-600'}>
           <SectionComponent fullHeight>
             <div className={'mx-auto flex flex-col items-center justify-center'}>
               <HeadLineComponent semi>Download the app</HeadLineComponent>
@@ -313,8 +268,8 @@ const Home: NextPage = () => {
             <SpacerComponent large />
             <div className={'mx-auto flex justify-center items-center space-x-10'}>
               <Link className='cursor-pointer' href={'/'}>
-                <div className={'cursor-pointer border border-blue-700 rounded-md py-4 px-10 flex space-x-5 items-center hover:opacity-50'}>
-                  <svg className={'w-6 h-6 fill-blue-700'} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'>
+                <div className={'cursor-pointer border border-red-700 rounded-md py-4 px-10 flex space-x-5 items-center hover:opacity-50'}>
+                  <svg className={'w-6 h-6 fill-red-700'} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'>
                     <path d='M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z' />
                   </svg>
                   <div className={'flex flex-col'}>
@@ -327,8 +282,8 @@ const Home: NextPage = () => {
               </Link>
 
               <Link className='cursor-pointer' href={'/'}>
-                <div className={'cursor-pointer border border-blue-700 rounded-md py-4 px-10 flex space-x-5 items-center hover:opacity-50'}>
-                  <svg className={'w-6 h-6 fill-blue-700'} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+                <div className={'cursor-pointer border border-red-700 rounded-md py-4 px-10 flex space-x-5 items-center hover:opacity-50'}>
+                  <svg className={'w-6 h-6 fill-red-700'} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
                     <path d='M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z' />
                   </svg>
                   <div className={'flex flex-col'}>
